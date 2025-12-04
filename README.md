@@ -129,4 +129,4 @@ Se añadió una pista de audio que se escucha cuando la bola está en movimiento
 
 # Resultado final
 
-El resultado final se puede ver en el siguiente [![vídeo](miniatura.png)](Grabación%202025-12-04%20225551.mp4)
+El resultado final se puede ver en el siguiente vídeo (haz click en la imagen para descargarlo) [![vídeo](miniatura.png)](Grabación%202025-12-04%20225551.mp4)
