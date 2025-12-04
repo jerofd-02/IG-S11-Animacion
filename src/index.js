@@ -46,6 +46,11 @@ let touchPowerStart = 0;
 // Grupo de animación
 const tweenGroup = new Group();
 
+// Sonidos
+let listener;
+let pinHitBuffer = null;
+let soundDispatcher;
+
 // Inicialización Ammo
 Ammo(Ammo).then(start);
 
@@ -60,6 +65,11 @@ function start() {
   initInput();
   // UI
   createUI();
+  // Cargar audio
+  const audioLoader = new THREE.AudioLoader();
+  audioLoader.load("sound/pins-sound-effect.mp3", function (buffer) {
+    pinHitBuffer = buffer;
+  });
 
   animationLoop();
 }
@@ -108,6 +118,10 @@ function initGraphics() {
     })
     .start();
 
+  // Listener para el audio
+  listener = new THREE.AudioListener();
+  camera.add(listener);
+
   //Luces
   const ambientLight = new THREE.AmbientLight(0x707070);
   scene.add(ambientLight);
@@ -138,6 +152,7 @@ function initPhysics() {
   collisionConfiguration = new Ammo.btDefaultCollisionConfiguration();
   // Gestor de colisiones convexas y cóncavas
   dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration);
+  soundDispatcher = dispatcher;
   // Colisión fase amplia
   broadphase = new Ammo.btDbvtBroadphase();
   // Resuelve resricciones de reglas físicas como fuerzas, gravedad, etc.
@@ -358,6 +373,7 @@ function createRigidBody(object, physicsShape, mass, pos, quat, vel, angVel) {
   );
   const body = new Ammo.btRigidBody(rbInfo);
 
+  body.threeObject = object;
   body.setFriction(0.5);
 
   if (vel) {
@@ -485,6 +501,9 @@ function launchBall() {
     new Ammo.btVector3(velocity.x, velocity.y, velocity.z)
   );
 
+  // Reproducir sonido
+  playPinSound(launchPower);
+
   // Limpiar la bola después de 10 segundos
   setTimeout(() => {
     if (scene.children.includes(ball)) {
@@ -525,7 +544,7 @@ function createUI() {
     <u>Táctil (móvil / tablet)</u><br>
     • Apuntar: Toca y arrastra (mover horizontal para apuntar).<br>
     • Ajustar fuerza: Desliza hacia arriba/abajo mientras arrastras (arriba = más fuerza).<br>
-    • Lanzar: Levanta el dedo (release) para disparar la bola.<br>
+    • Lanzar: Levanta el dedo para disparar la bola.<br>
     <br>
 
     <u>Interfaz</u><br>
@@ -674,6 +693,15 @@ function resetPins() {
         .start();
     });
   }, riseDelay);
+}
+
+function playPinSound(intensity = 1) {
+  if (!pinHitBuffer) return;
+
+  const sound = new THREE.Audio(listener);
+  sound.setBuffer(pinHitBuffer);
+  sound.setVolume(Math.min(intensity / 8, 1));
+  sound.play();
 }
 
 function onWindowResize() {
