@@ -43,7 +43,7 @@ Para **pantallas táctiles**:
 
 ## Interfaz
 
-Simplemente hay un botón a arriba a la izquierda que sirve para resetear los bolos
+Simplemente hay un botón a arriba a la izquierda que sirve para resetear los bolos. Adicionalmente a esto, están los controles en la parte derecha.
 
 ## Tweens
 
