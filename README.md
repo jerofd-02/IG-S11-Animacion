@@ -9,6 +9,7 @@
 - [Tweens](#tweens)
 - [Ammo.js](#ammojs)
 - [Audio](#audio)
+- [Referencias](#referencias)
 - [Resultado final](#resultado-final)
 
 ## Introducción
@@ -126,6 +127,10 @@ En resumen, para el proposito de crear la bolera viene genial, ya que la física
 ## Audio
 
 Se añadió una pista de audio que se escucha cuando la bola está en movimiento e impacta con los bolos.
+
+## Referencias
+- Script visto en clase: [script_45_ammo.js](https://github.com/otsedom/otsedom.github.io/blob/main/IG/S11/code/script_45_ammo.js)
+- Web para las texturas: [Poly Haven](https://polyhaven.com/)
 
 # Resultado final
 
