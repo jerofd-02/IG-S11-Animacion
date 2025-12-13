@@ -10,6 +10,7 @@
 - [Ammo.js](#ammojs)
 - [Audio](#audio)
 - [Referencias](#referencias)
+- [Enlace al código](#enlace-al-código)
 - [Resultado final](#resultado-final)
 
 ## Introducción
@@ -131,6 +132,9 @@ Se añadió una pista de audio que se escucha cuando la bola está en movimiento
 ## Referencias
 - Script visto en clase: [script_45_ammo.js](https://github.com/otsedom/otsedom.github.io/blob/main/IG/S11/code/script_45_ammo.js)
 - Web para las texturas: [Poly Haven](https://polyhaven.com/)
+
+## Enlace al código
+El resultado se puede ver en el siguiente CodeSandBox: https://codesandbox.io/p/sandbox/currying-shape-vgcskr
 
 # Resultado final
 
